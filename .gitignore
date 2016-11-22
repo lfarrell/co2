@@ -1,0 +1,5 @@
+.DS_Store
+.idea
+raw_data/*
+data/temps/*
+node_modules/*

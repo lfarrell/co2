@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Visualization of the Temperatures and Carbon Dioxide Levels of the World" />
+    <meta name="keywords" content="Climate Change,Drought,Visualization,Temperatures,Carbon Dioxide" />
+    <title>Temperature Rising</title>
+    <link href="https://fonts.googleapis.com/css?family=Abhaya+Libre|Alegreya|Taviraj" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="container-fluid">
+    <div id="note" class="row">
+        <p id="load" class="text-center">Loading ...</p>
+    </div>
+    <div class="row hide">
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+            <h1 class="text-center">Temperature Rising</h1>
+            <h3 class="text-center">A Look at World Temperature Anomalies & CO2 Levels</h3>
+        </div>
+    </div>
+    <div class="row charts opaque">
+        <div class="col-xs-12 col-offset-sm-1 col-sm-10 col-lg-offset-1 col-lg-10">
+            <p></p>
+        </div>
+
+        <div id="temp-graphs" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h3 class="text-center">Departure from Average (Anomaly, degrees (C))</h3>
+            <div id="year-legend" class="col-xs-12 col-sm-offset-1 col-sm-12 col-lg-offset-2 col-lg-10"></div>
+            <div id="year-temp" class="col-xs-12 col-sm-12 col-md-offset-1 col-md-11 col-lg-offset-1 col-lg-11"></div>
+        </div>
+        <div>
+            <div id="co-two" class="col-xs-12 col-sm-12 col-md-6 col-lg-6 graph-line"></div>
+        </div>
+
+        <div class="col-sm-12 col-lg-12">
+            <footer>
+                <ul class="list-unstyled">
+                    <li><a href="../index.php">Other Visualizations</a></li>
+                    <li><a href="../western_water">Western Water</a></li>
+                    <li><a href="mailto:farrelldlfarrell@gmail.com">Email</a></li>
+                    <li><a href="https://twitter.com/farrelldlfarrel">Twitter</a></li>
+                </ul>
+            </footer>
+        </div>
+        <div class="col-sm-12 col-lg-12">
+            <div class="col-md-offset-1 subfooter">
+                <h3 class="text-center">Data Sources</h3>
+                <ul class="list-unstyled text-center">
+                    <li><a href="http://wcc.sc.egov.usda.gov/nwcc/rgrpt">USDA - Natural Resources Conservation Service (Snow Levels)</a></li>
+                    <li><a href="http://www.nrcs.usda.gov/wps/portal/nrcs/detail/nh/home/?cid=stelprdb1254126">USDA - Natural Resources Conservation Service (Colorado River Basin Map)</a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.3.0/d3.min.js" charset="utf-8"></script>
+<!--<script src="https://d3js.org/d3-selection-multi.v1.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.11.0/d3-legend.min.js"></script>
+<script src="js/assets/d3-jetpack-v4.min.js"></script>
+<script src="js/assets/d3-tip.min.js"></script>
+<!--<script src="js/assets/swoopy-drag.min.js"></script>-->
+<script src="js/custom.js"></script>
+<script type="text/javascript">
+    /* var _gaq = _gaq || [];
+     _gaq.push(['_setAccount', 'UA-47256145-1']);
+     _gaq.push(['_trackPageview']);
+
+     (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+     })(); */
+</script>
+</body>
+</html>
