@@ -120,6 +120,62 @@ d3.queue()
          //   drawGraph(i);
         });
 
+        var annotations_1893 = [
+            {
+                "xVal": "01",
+                "yVal": 0,
+                "path": "M59,100L42,75",
+                "text": "Greatest below avg month",
+                "textOffset": [17, 108]
+            }
+        ];
+
+        var annotations_1984 = [
+            {
+                "xVal": "12",
+                "yVal": 0,
+                "path": "M67,96L103,78",
+                "text": "Most recent below avg month",
+                "textOffset": [6,107]
+            }
+        ];
+
+        var annotations_2015 = [
+            {
+                "xVal": "12",
+                "yVal": 0,
+                "path": "M59,100L103,76",
+                "text": "1st anomaly above 1C",
+                "textOffset": [17, 108]
+            }
+        ];
+
+        var annotations_2016 = [
+            {
+                "xVal": "03",
+                "yVal": 0,
+                "path": "M65,99L54,77",
+                "text": "Greatest above avg month",
+                "textOffset": [17, 108]
+            }
+        ];
+
+        annotate("#graphed13", annotations_1893);
+        annotate("#graphed104", annotations_1984);
+        annotate("#graphed135", annotations_2015);
+        annotate("#graphed136", annotations_2016);
+
+        function annotate(selector, annotations) {
+            var swoopy = d3.swoopyDrag()
+                .x(function(d){ return d.xVal; })
+                .y(function(d){ return d.yVal; })
+                .draggable(0);
+
+            swoopy.annotations(annotations);
+
+            d3.select(selector + " svg").append("g.annotations").call(swoopy);
+        }
+
         /**
          * Draw strip chart
          * @param selector
