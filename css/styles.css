@@ -3,7 +3,6 @@ body {
     /* font-family: 'Taviraj', serif;
      font-family: 'Alegreya', serif;*/
     background-color: rgb(37, 37, 35);
-    /*   background-color: #1A1110; */
     color: white;
 }
 
@@ -30,7 +29,7 @@ h1 {
 }
 
 .annotations text {
-    font-size: 12px;
+    font-size: 12.5px;
 }
 
 #arrow {
@@ -78,7 +77,9 @@ h1 {
 
 text {
     fill: white;
+    stroke: none;
 }
+
 
 text.label {
     font-size: 85%;
@@ -91,6 +92,10 @@ text.label {
 
 .lower {
     margin-top: 25px;
+}
+
+div svg {
+    display: block;
 }
 
 div.tooltip {
