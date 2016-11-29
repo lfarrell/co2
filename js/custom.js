@@ -24,7 +24,7 @@ d3.queue()
         d.interpolated = +d.interpolated;
     });
 
-    var xScale = d3.scaleTime()
+   /* var xScale = d3.scaleTime()
         .range([0, co2_screen_width]);
     xScale.domain(d3.extent(co2, d3.f('date')));
 
@@ -72,7 +72,7 @@ d3.queue()
             .attr("d", co2_line(co2));
     }
 
-    drawGraph(0);
+    drawGraph(0); */
 
         /**
          *
@@ -81,6 +81,7 @@ d3.queue()
         var tip_temp = d3.tip().attr('class', 'd3-tip').html(function(d) {
             return '<h4 class="text-center">' + stringDate(d.month) + ' (' + d.year + ')</h4>' +
                 '<ul class="list-unstyled">' +
+                '<li class="text-center"><h4>Temperatures</h4></li>' +
                 '<li>Historical Avg: ' + num_format(d.historic_avg) + ' degrees (C)</li>' +
                 '<li>Actual Avg: ' + num_format(d.actual_avg) + ' degrees (C)</li>' +
                 '<li>Departure from Avg: ' + num_format(d.anomaly) + ' degrees (C)</li>' +
@@ -90,6 +91,7 @@ d3.queue()
         var co2_tip = d3.tip().attr('class', 'd3-tip').html(function(d) {
             return '<h4 class="text-center">' + stringDate(d.month) + ' (' + d.year + ')</h4>' +
                 '<ul class="list-unstyled">' +
+                '<li class="text-center"><h4>CO<sub>2</sub> Levels</h4></li>' +
                 '<li>Average: ' + num_format(d.interpolated) + ' parts per million</li>' +
                 '<li>Long Term Trend: ' + num_format(d.trend) + ' parts per million</li>' +
                 '</ul>';
@@ -105,20 +107,6 @@ d3.queue()
             return d.type === 'ocean_land';
         });
 
-        /*  var all_merged = [];
-
-        land_ocean.forEach(function(d) {
-            co2.forEach(function(e) {
-                if(d.year === e.year && d.month === e.month) {
-                    all_merged.push( _.merge(d, e));
-                }
-            });
-
-
-            all_merged.push(d);
-
-        }); */
-
         var tempScale = d3.scaleTime()
             .range([0, bar_width]);
         tempScale.domain(d3.extent(land_ocean, d3.f('date')));
@@ -126,9 +114,9 @@ d3.queue()
         var co2Scale = d3.scaleTime()
             .range([0, bar_width]);
         co2Scale.domain(d3.extent(co2, d3.f('co2_date')));
-       // var colors = ['#a50026','#d73027','#f46d43','#fdae61','#fee090','#ffffbf','#e0f3f8','#abd9e9','#74add1','#4575b4','#313695'].reverse();
+
         var colors = ['#67001f','#b2182b','#d6604d','#f4a582','#fddbc7','#f7f7f7','#d1e5f0','#92c5de','#4393c3','#2166ac','#053061'].reverse();
-        var co2_colors = ['#fff7f3','#fde0dd','#fcc5c0','#fa9fb5','#f768a1','#dd3497','#ae017e','#7a0177','#49006a'];
+      //  var co2_colors = ['#fff7f3','#fde0dd','#fcc5c0','#fa9fb5','#f768a1','#dd3497','#ae017e','#7a0177','#49006a'];
         var co2_colors = ['#fcfbfd','#efedf5','#dadaeb','#bcbddc','#9e9ac8','#807dba','#6a51a3','#54278f','#3f007d'];
         var strip_color = d3.scaleQuantize()
             .domain([-1.25, 1.25])
@@ -139,7 +127,7 @@ d3.queue()
             .range(co2_colors);
 
         drawLegend("#year-legend", strip_color);
-        drawLegend("#year-legend", co2_color, true);
+        drawLegend("#co2-legend", co2_color, true);
 
         var grouped_land_ocean = d3.nest()
             .key(function(d) { return d.year; })
@@ -374,7 +362,16 @@ d3.queue()
     }
 
     function drawLegend(selector, colors, wide) {
-        var size = (wide !== undefined) ? 90 :70;
+        var size, offset;
+
+        if(wide !== undefined) {
+            size = 90;
+            offset = 85;
+        } else {
+            size = 70;
+            offset = 0;
+        }
+
         var class_name = selector.substr(1);
         var svg = d3.select(selector).append("svg")
                 .classed("svg", true)
@@ -385,7 +382,7 @@ d3.queue()
         svg.append("g")
             .attr("class", "legend-" + class_name)
             .attr("width", 1000)
-            .translate([0, 20]);
+            .translate([offset, 20]);
 
         var legend = d3.legendColor()
                 .shapeWidth(size)
@@ -399,20 +396,6 @@ d3.queue()
         return svg;
     }
 
-
-    function keyFunction(key, value1, value2) {
-        var accepted_value;
-
-        if (key === "avg_filesize") {
-            return; // Don't want to merge these. It will give weird results
-        } else if (key !== "date") {
-            accepted_value = parseInt(value1) + parseInt(value2);
-        } else {
-            accepted_value = (typeof value1 === "object") ? value1 : new Date(value1);
-        }
-
-        return accepted_value;
-    }
         /**
          * Get month as word
          * @param month
