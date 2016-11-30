@@ -279,7 +279,6 @@ d3.queue()
         annotate("#graphed104", annotations_1984, true);
         annotate("#graphed106", annotations_1986, false);
         annotate("#graphed107", annotations_1987, false);
-        annotate("#graphed107", annotations_1987, true);
         annotate("#graphed118", annotations_1998, true);
         annotate("#graphed122", annotations_2002, false);
         annotate("#graphed123", annotations_2003, false);
