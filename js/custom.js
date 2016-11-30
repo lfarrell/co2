@@ -362,7 +362,7 @@ d3.queue()
     }
 
     function drawLegend(selector, colors, wide) {
-        var width = window.innerWidth; console.log(width)
+        var width = window.innerWidth;
         var size, orientation;
 
         if(width < 1000) {
