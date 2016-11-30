@@ -5,10 +5,10 @@ d3.queue()
 
     var margins = {top: 25, right: 50, bottom: 50, left: 40},
         co2_margins = {top: 25, right: 150, bottom: 50, left: 70},
-        co2_screen_width = window.innerWidth - co2_margins.right - co2_margins.left,
+      //  co2_screen_width = window.innerWidth - co2_margins.right - co2_margins.left,
         bar_width = 72,
         height = 5000,
-        co2_height = 500,
+      //  co2_height = 500,
         parse_date = d3.timeParse("%m/%Y"),
         parse_month = d3.timeParse("%m"),
         num_format = d3.format(".2f");
@@ -362,31 +362,37 @@ d3.queue()
     }
 
     function drawLegend(selector, colors, wide) {
-        var size, offset;
+        var width = window.innerWidth; console.log(width)
+        var size, orientation;
 
-        if(wide !== undefined) {
+        if(width < 1000) {
+            size = 40;
+            orientation = 'vertical';
+        }else if(wide !== undefined) {
             size = 90;
-            offset = 85;
+            orientation = 'horizontal';
         } else {
             size = 70;
-            offset = 0;
+            orientation = 'horizontal';
         }
 
+        var legend_height = (orientation === 'vertical') ? 230 : 75;
+        var legend_width = (width < 1000) ? 200 : 900;
         var class_name = selector.substr(1);
         var svg = d3.select(selector).append("svg")
                 .classed("svg", true)
                 .classed("legend", true)
-                .attr("width", 1000)
-                .attr("height", 75);
+                .attr("width", legend_width)
+                .attr("height", legend_height);
 
         svg.append("g")
             .attr("class", "legend-" + class_name)
-            .attr("width", 1000)
-            .translate([offset, 20]);
+            .attr("width", legend_width)
+            .translate([0, 20]);
 
         var legend = d3.legendColor()
                 .shapeWidth(size)
-                .orient('horizontal')
+                .orient(orientation)
                 .labelFormat(d3.format(".02f"))
                 .scale(colors);
 
