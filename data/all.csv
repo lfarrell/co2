@@ -4517,6 +4517,7 @@ year,anomaly,historic_avg,actual_avg,type,month
 2013,0.8292,12.9,13.7292,ocean_land,11
 2014,0.6896,12.9,13.5896,ocean_land,11
 2015,0.9648,12.9,13.8648,ocean_land,11
+2016,0.7504,12.9,13.6504,ocean_land,11
 1880,0.0049,15.7,15.7049,ocean,12
 1881,0.0091,15.7,15.7091,ocean,12
 1882,-0.0496,15.7,15.6504,ocean,12
@@ -4925,3 +4926,4 @@ year,anomaly,historic_avg,actual_avg,type,month
 2013,0.7000,12.2,12.9,ocean_land,12
 2014,0.8319,12.2,13.0319,ocean_land,12
 2015,1.1205,12.2,13.3205,ocean_land,12
+2016,0.7895,12.2,12.9895,ocean_land,12
